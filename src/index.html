@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Interactive Trigonometry Graphics</title>
+	<meta charset="UTF-8">
+  <meta name="description" content="Interactive Math Graphics">
+  <meta name="keywords" content="HTML,Math,JavaScript,Graphic,Canvas,requestAnimationFrame">
+  <meta name="author" content="Nacho Lozano">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+	<style>
+		canvas{
+			width: 100%;
+		}
+		body {
+			display: flex;
+			min-height: 100vh;
+			flex-direction: column;
+		}
+		main {
+			flex: 1 0 auto;
+		}
+		.color{
+			width: 1em;
+			height: 1em;
+			margin-top: 0.3em;
+			float: right;
+			border-radius: 50%;
+			display: none;
+		}
+		.checked .color{
+			display: inline-block;
+		}
+		.selected{
+			background-color: #e0e0e0!important;
+		}
+		.collection-item:hover{
+			background-color: #f5f5f5!important;
+			cursor: pointer;
+		}
+		.canvas-fixed{
+			width: 70%;
+			position: fixed;
+			z-index: 108;
+			top: 0;
+			background-color: white;
+		}
+		@media (max-width: 992px) {
+			.canvas-fixed{
+				width: 85%;
+			}
+		}
+		.color:hover{
+			cursor: auto;
+		}
+		.btn,
+		[for=toggle-grid]{
+			margin-top: 0.5em;
+		}
+	</style>
+</head>
+
+<body>
+	
+	<header id="header">
+		<nav>
+			<div class="nav-wrapper teal lighten-1">
+				<a class="brand-logo center"> Interactive Trigonometry Graphics </a>
+			</div>
+		</nav>
+	</header>
+
+  <main class="container">
+
+    <!--Intro-->
+    <div id="intro" class="section">
+      <p>
+        Interactive trigonometry graphics made with Vanilla JS. <br>
+        I have animated these interactive graphics with 
+        <a href="https://developer.mozilla.org/en/docs/Web/API/Window/requestAnimationFrame">window.requestAnimationFrame()</a> and
+        <a href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial">Canvas</a>. <br>
+        I have used functions from <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math">Math object</a>.
+      </p>
+    </div>
+
+    <!--Canvas-->
+    <canvas id='canvas'></canvas>
+
+		<div class="row">
+			<!--Range input-->
+			<div class="col s12 m12">
+				<p class="range-field">
+					<input type="range" id="angle" min="0" max="80" value="0" step="0.001">
+				</p>
+			</div>
+			<!--Buttons-->
+			<div class="col s12 m6">
+				<div class="section">
+					<button class="waves-effect waves-light btn" id="animate">Animate</button>
+					<button class="waves-effect waves-light btn" id="stop">Stop</button>
+					<button class="waves-effect waves-light btn" id="restart">Restart graphics</button>
+					<button class="waves-effect waves-light btn" id="random">?</button>
+				</div>
+			</div>
+			<!--Toggle grid-->
+			<div class="col s12 m6">
+				<div class="section">
+					<input type="checkbox" class="filled-in" id="toggle-grid"/>
+					<label for="toggle-grid">Toggle grid</label>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+      <!--Animation speed-->
+			<div class="col s12 m6">
+				<label>
+					Animation speed ( It works with negative speed )
+					<input id="speed" type="number"></input>
+				</label>
+			</div>
+      <!--Zoom-->
+			<div class="col s12 m6">
+				<label>
+					Zoom
+					<input id="zoom" type="number" step="1"></input>
+				</label>
+			</div>	
+		</div>
+
+		<div class="row">
+			<div class="col m12 s12">
+				<a  class="btn btn-floating tooltipped waves-effect waves-light" 
+					data-position="right" 
+					data-delay="50" 
+					data-tooltip="Can't uncheck all graphics. Click each row to highlight the graphic.">
+						<i class="material-icons">info_outline</i>
+				</a>
+			</div>
+		</div>
+
+		<div id="list">
+		</div>
+  
+  </main>
+
+  <!--Footer-->
+	<footer class="page-footer teal lighten-1">
+		<div class="container">
+			<div class="row">
+				<div class="col l6 s12"></div>
+				<div class="col l4 offset-l2 s12">
+					<ul>
+						<li><a class="grey-text text-lighten-3" href="http://materializecss.com/">MaterializeCSS Framework</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="footer-copyright">
+			<div class="container">
+				2017
+				<span class="grey-text text-lighten-4 right">Made by nacholozano</span>
+			</div>
+		</div>
+	</footer>
+
+	<script src='interactive-trigonometry-graphics.js'></script>
+	<script
+    src="https://code.jquery.com/jquery-3.1.1.min.js"
+    integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,24 @@
+{
+  "name": "interactive-trigonometry-graphics",
+  "version": "0.0.0",
+  "main": "index.js",
+  "repository": "git+ssh://git@gitlab.com/nacholozano/interactive-math-graphics.git",
+  "author": "nacholozano <nacholozanogui@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev:js": "uglifyjs src/js/*.js -o public/interactive-trigonometry-graphics.js -b --wrap='Inmaga'",
+    "dev:html": "html-minifier src/index.html -o public/index.html",
+    "dev": "yarn run dev:js && yarn run dev:html",
+    "watch": "watch 'yarn run dev' src/",
+    "build:js": "uglifyjs src/**.js -o public/interactive-trigonometry-graphics.js --compress --mangle --mangle-props=1",
+    "build:html": "html-minifier src/index.html --minify-css --remove-comments --collapse-whitespace -o public/index.html",
+    "build": "yarn run build:js && yarn run build:html"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "html-minifier": "^3.3.0",
+    "lite-server": "^2.3.0",
+    "uglify-js": "^2.7.5",
+    "watch": "^1.0.2"
+  }
+}

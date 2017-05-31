@@ -1,0 +1,2 @@
+- Estudiar la representación circular de las gráficas
+- Buscar todos en el js

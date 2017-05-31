@@ -1,1 +1,0 @@
-# interactive-trigonometry-graphics
